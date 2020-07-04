@@ -1,0 +1,156 @@
+﻿@model ProjectFlyJO2020.Models.Passenger_info
+
+@{
+    /**/
+
+    ViewBag.Title = "Info Personal";
+}
+
+
+<link href="@Url.Content("~/css/otherFly.css")" rel="stylesheet" type="text/css" />
+
+<style>
+    .col-md-7 {
+        margin: 0 auto;
+    }
+</style>
+<!-- Start page content in index html-->
+<div class="all-content">
+    <!-- Strart owl slider -->
+    <div class="wp-content">
+        <div class="container-fluid p-0">
+            <figure class="intro" style="margin:0px;">
+                <!--Backgroung curive here-->
+
+                <div class="over-bg"></div>
+                <img class="full-bg-wall" src="https://images.squarespace-cdn.com/content/v1/503f90c5c4aa93dffe120ad5/1424185472908-F6YIRU42OAQOBR3LBYDR/ke17ZwdGBToddI8pDm48kFw3fwNcJk05JPzDNJ-Rc8IUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc0L8WP_HW0rg87mQDbEZzAEzzfA7OEiXl2wCxu_sinuze67mWuq8rTxjiuLwfd9WV/image-asset.jpeg" alt="" />
+                <figcaption class="caption">
+                    <h1>Personal Information Page</h1>
+                </figcaption>
+
+
+                <!-- curive  owl slider -->
+
+                <span class="overlay">
+                    <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 500 250" enable-background="new 0 0 500 250" xml:space="preserve" PreserveAspectRatio="none">
+<path fill="#FFFFFF" d="M250,246.5c-97.85,0-186.344-40.044-250-104.633V250h500V141.867C436.344,206.456,347.85,246.5,250,246.5z" />
+
+
+
+
+</svg>
+                </span>
+            </figure>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="padding:70px 0px;">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="title" style="text-align:center; margin-bottom:20px;"> <h2>Please Fill Personal info</h2></div>
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="padding:6px;">First Nmae</span>
+                </div>
+                @Html.EditorFor(model => model.Fname, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Fname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="padding:6px;">Last Nmae</span>
+                </div>
+                @Html.EditorFor(model => model.Lname, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Lname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="padding:6px;width: 96px;"><img style="width:24px;" src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png" />Phone</span>
+                </div>
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 96px;"><img style="width:24px;" src="https://cdn4.iconfinder.com/data/icons/dot/256/baby.png" />Kids</span>
+                </div>
+                @Html.EditorFor(model => model.Kids, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", min = 0, max = 20 } })
+                @Html.ValidationMessageFor(model => model.Kids, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="padding: 5px;width: 96px;"><img style="width:24px;" src="https://static.thenounproject.com/png/876153-200.png" />Adults</span>
+                </div>
+                @Html.EditorFor(model => model.Adult, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", min = 0, max = 20 } })
+                @Html.ValidationMessageFor(model => model.Adult, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="padding: 6px;width: 96px;"><img style="width:24px;" src="https://image.flaticon.com/icons/png/128/43/43811.png" />Elders</span>
+                </div>
+                @Html.EditorFor(model => model.Elders, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", min = 0, max = 20 } })
+                @Html.ValidationMessageFor(model => model.Elders, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="col-md-7 input-group mb-3 input-group">
+                <button class="btn btn-dark" type="submit" style="width: 50%;margin: 0 auto;">
+                    <span class="spinner-grow spinner-grow-sm text-success" role="status" aria-hidden="true"></span>
+                    Book tickets
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+}
+    <div class="main-loader"></div>
+
+    <script src="~/js/jquery.js"></script>
+@Scripts.Render("~/js/other.js")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

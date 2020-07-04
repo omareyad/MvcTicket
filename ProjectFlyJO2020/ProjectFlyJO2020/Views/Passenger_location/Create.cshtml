@@ -1,0 +1,292 @@
+﻿@model ProjectFlyJO2020.Models.Passenger_location
+
+@{
+    ViewBag.Title = "FlyJordan";
+}
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css'>
+<link href="~/css/indexFly.css" rel="stylesheet" type="text/css" />
+
+<div class="fix">
+    <div class="BGvideo container-fluid" style="z-index: 2;
+  position: relative;
+    width: 100%;
+    height: 100vh;
+    ">
+        <!-- Background video html5 -->
+        <video autoplay muted loop>
+            <source src="" data-src=@Url.Content("~/video/Fly.mp4") type="video/mp4">
+        </video>
+        <!-- End Background video html5 -->
+        <!-- header start here -->
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="container text-white">
+                <div class="row ">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="control-label">From</label>
+                            @Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "autocomplete-airport", @id = "autocomplete", autocomplete = "off" } })
+                            @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="control-label">To</label>
+                            @Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "autocomplete-airport", @id = "autocomplete2", autocomplete = "off" } })
+                            @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="control-label">Depart</label>
+                            @Html.EditorFor(model => model.Depart, new { htmlAttributes = new { @class = "", @type = "date" } })
+                            @Html.ValidationMessageFor(model => model.Depart, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="control-label">Return</label>
+                            @Html.EditorFor(model => model.Return, new { htmlAttributes = new { @class = "", @type = "date" } })
+                            @Html.ValidationMessageFor(model => model.Return, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5" style="margin: 0 auto;">
+
+                        <div class="form-group">
+                            <button type="submit" class="btn-deal">Find Deals</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- header end here -->
+
+    </div>
+</div>
+
+
+<section class="img_places " style="padding: 100px 0px;">
+    <div class="container-fluid">
+        <div class="Title_Offers" style="text-align:center;margin-bottom:30px;"><h1>Best Offers in Jordan Fly</h1></div>
+
+        <div class="row">
+            <div class="col-lg-3  col-md-4  col-6 box1 wow slideInDown" data-wow-duration="3s" id="barca">
+                <div class="card">
+                    <div class="card_image"> <img src="https://www.goldenhorses-travel.com/wp-content/uploads/2019/04/Barcelona-Spain-iStock-619257048.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Spain</p>
+                        <p class="city">Barcelona</p>
+                        <p class="price">129 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow slideInDown" data-wow-duration="3s" id="madrid">
+                <div class="card">
+                    <div class="card_image"> <img src="https://i.alarab.co.uk/styles/article_image_800x450_scale/s3/empictures/slide/_42999_madridg.jpg?itok=w_f5Xwck" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Spain</p>
+                        <p class="city">Madrid</p>
+                        <p class="price">129 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow slideInDown" data-wow-duration="3s" id="man">
+                <div class="card">
+                    <div class="card_image"> <img src="https://omghcontent.affino.com/AcuCustom/Sitename/DAM/107/GREATER-MANCHESTER-MIN__thumb.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">United Kingdom'</p>
+                        <p class="city"> Manchester</p>
+                        <p class="price">120 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow slideInDown" data-wow-duration="3s" id="London">
+                <div class="card">
+                    <div class="card_image"> <img src="https://www.gisma.com/media/1450/study-in-london-min.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">United Kingdom'</p>
+                        <p class="city"> London</p>
+                        <p class="price">120 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow tada " data-wow-duration="3s" data-wow-iteration="infinite" id="Paris">
+                <div class="card">
+                    <div class="card_image"> <img src="https://thelogicescapesme.com/wp-content/uploads/2018/03/paris.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <img class="offers" src="https://area-77.com/cliparts/sites/default/files/50%25-off-png-transparent-images-148450-5741710.png" />
+                        <p class="city-card__country">France</p>
+                        <p class="city">Paris</p>
+                        <p class="price">44 JOD </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeInDownBig" data-wow-duration="3s" id="Milan">
+                <div class="card">
+                    <div class="card_image"> <img src="https://sumfinity.com/wp-content/uploads/2018/09/Piazza-del-Duomo-Milano-Italy-sunrise.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Italy</p>
+                        <p class="city">Milan</p>
+                        <p class="price">110 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeInDownBig" data-wow-duration="3s" id="istanbul">
+                <div class="card">
+                    <div class="card_image"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxVdujP_dbiBT81cf-byTg2awY_6JmO_HeflP9dKjWu7UyU9a9&s" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Turkey</p>
+                        <p class="city">Istanbul</p>
+                        <p class="price">70 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeIn" data-wow-duration="3s" id="munich">
+                <div class="card">
+                    <div class="card_image"> <img src="https://m.pleasantholidays.com/img/c/gw_640/ttl_30d/pt/tomime_jpeg/2url_www.pleasantholidays.com/media/ffffffff8f8c7403/destination/images/Europe/Germany/Munich/eur_munich_main.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Germany</p>
+                        <p class="city"> Munich</p>
+                        <p class="price">130 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeIn" data-wow-duration="2s" id="moscow">
+                <div class="card">
+                    <div class="card_image"> <img src="https://www.kingsofrussia.com/wp-content/uploads/2019/07/moscow.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Russia</p>
+                        <p class="city">Moscow</p>
+                        <p class="price">112 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeIn" data-wow-duration="3s" id="cairo">
+                <div class="card">
+                    <div class="card_image"> <img src="https://www.fodors.com/wp-content/uploads/2019/06/EgyptTours__HERO_CC_Giza_Pyramids_Desert_Camels.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">Egypt</p>
+                        <p class="city">Cairo</p>
+                        <p class="price">35 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-4  col-6 box1 wow fadeIn" data-wow-duration="3s" id="dubai">
+                <div class="card">
+                    <div class="card_image"> <img src="https://www.caymanfinancialreview.com/wp-content/uploads/2018/08/dubai.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">United Arab Emirates</p>
+                        <p class="city">Dubai</p>
+                        <p class="price">55 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3  col-md-4  col-6 box1" id="delhi">
+                <div class="card">
+                    <div class="card_image"> <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6f/11/54.jpg" /> </div>
+                    <div class="card_title title-white">
+                        <p class="city-card__country">India</p>
+                        <p class="city">Delhi</p>
+                        <p class="price">63 JOD</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+    <div class="container">
+        <h3 style="text-align:center;">TESTIMONIALS</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="customers-testimonials" class="owl-carousel">
+
+                    <!--TESTIMONIAL 1 -->
+                    <div class="item">
+                        <div class="shadow-effect">
+                            <img class="img-circle" src="https://timesofindia.indiatimes.com/thumb/msid-58871824,width-800,height-600,resizemode-4/58871824.jpg" alt="">
+                            <p>Best travel and reservation company. It's great. Give it 5 stars. Thank you.</p>
+                        </div>
+                        <div class="testimonial-name">Adam</div>
+
+                    </div>
+                    <!--END OF TESTIMONIAL 1 -->
+                    <!--TESTIMONIAL 2 -->
+                    <div class="item">
+                        <div class="shadow-effect">
+                            <img class="img-circle" src="https://media.istockphoto.com/photos/casual-man-on-white-picture-id531547724?k=6&m=531547724&s=612x612&w=0&h=OgdtS427JU1A027wOTBBdOHE89Ct7dUkETZ4pOedyVE=" alt="">
+                            <p>The lowest price for travel around the world, unique service, punctuality, and follow-up for all travelers.</p>
+                        </div>
+                        <div class="testimonial-name">Ahmad</div>
+                    </div>
+                    <!--END OF TESTIMONIAL 2 -->
+                    <!--TESTIMONIAL 3 -->
+                    <div class="item">
+                        <div class="shadow-effect">
+                            <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                            <p>
+                                I cannot describe your company because it is simply the best,
+                                Thanks for your honesty in doing business and I give you 100 stars.
+                            </p>
+                        </div>
+                        <div class="testimonial-name">Zain</div>
+                    </div>
+                    <!--END OF TESTIMONIAL 3 -->
+                    <!--TESTIMONIAL 4 -->
+                   
+                    <!--END OF TESTIMONIAL 5 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END OF TESTIMONIALS -->
+
+<div class="main-loader"></div>
+
+
+<script src="~/js/jquery.js"></script>
+<script src='https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js'></script>
+<script src='https://screenfeedcontent.blob.core.windows.net/html/airports.js'></script>
+<script src="~/js/googleApi1.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js'></script>
+@Scripts.Render("~/js/index.js")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

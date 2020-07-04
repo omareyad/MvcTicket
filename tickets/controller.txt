@@ -1,0 +1,269 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication16.Models;
+using System.ComponentModel;
+namespace WebApplication16.Controllers
+{
+    public class passenger_infoController : Controller
+    {
+        private FlyModel db = new FlyModel();
+
+        // GET: passenger_info
+        public async Task<ActionResult> Index()
+        {
+            return View(await db.passenger_info.ToListAsync());
+        }
+
+        // GET: passenger_info/Details/5
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            passenger_info passenger_info = await db.passenger_info.FindAsync(id);
+            if (passenger_info == null)
+            {
+                return HttpNotFound();
+            }
+
+            Passenger_location passenger_location = await db.Passenger_location.FindAsync(id);
+            var second = new Passenger_location { Form = passenger_location.Form, TO = passenger_location.TO, Depart = passenger_location.Depart, Return = passenger_location.Return };
+            var first = new passenger_info { Id = passenger_info.Id ,Fname=passenger_info.Fname,Lname=passenger_info.Lname,Adults=passenger_info.Adults
+            ,Elders=passenger_info.Elders,Kids=passenger_info.Kids,phone=passenger_info.phone};
+           
+            var tupleData = new Tuple<passenger_info, Passenger_location>(first, second);
+            return View(tupleData);
+        }
+
+        // GET: passenger_info/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: passenger_info/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Fname,Lname,Kids,Adults,Elders,phone")] passenger_info passenger_info)
+        {
+            if (ModelState.IsValid)
+            {
+                db.passenger_info.Add(passenger_info);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Details",new {@id=passenger_info.Id });
+            }
+           
+
+            return View();
+        }
+
+        // GET: passenger_info/Edit/5
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            passenger_info passenger_info = await db.passenger_info.FindAsync(id);
+            if (passenger_info == null)
+            {
+                return HttpNotFound();
+            }
+            return View(passenger_info);
+        }
+
+        // POST: passenger_info/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Fname,Lname,Kids,Adults,Elders,phone")] passenger_info passenger_info)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(passenger_info).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(passenger_info);
+        }
+
+        // GET: passenger_info/Delete/5
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            passenger_info passenger_info = await db.passenger_info.FindAsync(id);
+            if (passenger_info == null)
+            {
+                return HttpNotFound();
+            }
+            return View(passenger_info);
+        }
+
+        // POST: passenger_info/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            passenger_info passenger_info = await db.passenger_info.FindAsync(id);
+            db.passenger_info.Remove(passenger_info);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}
+
+
+
+
+
+
+**************************************************************
+   // POST: passenger_info/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Fname,Lname,Kids,Adults,Elders,phone")] passenger_info passenger_info)
+        {
+            if (ModelState.IsValid)
+            {
+                db.passenger_info.Add(passenger_info);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Details",new {@id=passenger_info.Id });
+            }
+           
+
+            return View();
+        }
+**************************************************************
+    // GET: passenger_info/Details/5
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            passenger_info passenger_info = await db.passenger_info.FindAsync(id);
+            if (passenger_info == null)
+            {
+                return HttpNotFound();
+            }
+
+            Passenger_location passenger_location = await db.Passenger_location.FindAsync(id);
+            var second = new Passenger_location { Form = passenger_location.Form, TO = passenger_location.TO, Depart = passenger_location.Depart, Return = passenger_location.Return };
+            var first = new passenger_info { Id = passenger_info.Id ,Fname=passenger_info.Fname,Lname=passenger_info.Lname,Adults=passenger_info.Adults
+            ,Elders=passenger_info.Elders,Kids=passenger_info.Kids,phone=passenger_info.phone};
+           
+            var tupleData = new Tuple<passenger_info, Passenger_location>(first, second);
+            return View(tupleData);
+        }
+
+
+
+***********************************************************************************details view
+
+@using WebApplication16.Models;
+@model Tuple<passenger_info, Passenger_location>
+
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>passenger_info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.Fname)
+        </dt>
+
+        <dd>
+            @Model.Item1.Fname
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.Lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item1.Lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.Kids)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item1.Kids)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.Adults)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item1.Adults)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.Elders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item1.Elders)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item1.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item1.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Tuple => Tuple.Item2.Form)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Tuple => Tuple.Item2.Form)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Edit", "Edit", new {}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

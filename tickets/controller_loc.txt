@@ -1,0 +1,18 @@
+  // POST: Passenger_location/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,Form,TO,Depart,Return")] Passenger_location passenger_location)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Passenger_location.Add(passenger_location);
+                await db.SaveChangesAsync();
+                //return RedirectToAction("Index");
+            }
+
+            return View("~/Views/passenger_info/Create.cshtml");
+        }
+
+

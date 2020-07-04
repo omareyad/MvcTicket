@@ -1,0 +1,169 @@
+﻿@using ProjectFlyJO2020.Models
+@model Tuple<Passenger_info, Passenger_location>
+
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<link href="@Url.Content("~/css/otherFly.css")" rel="stylesheet" type="text/css" />
+<!-- Start page content in index html-->
+<div class="all-content">
+    <!-- Strart owl slider -->
+    <div class="wp-content">
+        <div class="container-fluid p-0">
+            <figure class="intro" style="margin:0px;">
+                <!--Backgroung curive here-->
+
+                <div class="over-bg"></div>
+                <img class="full-bg-wall" src="https://wallpaperaccess.com/full/1307289.jpg" alt="" />
+                <figcaption class="caption">
+                    <h1>Ticket Page</h1>
+                </figcaption>
+
+
+                <!-- curive  owl slider -->
+
+                <span class="overlay">
+                    <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 500 250" enable-background="new 0 0 500 250" xml:space="preserve" PreserveAspectRatio="none">
+<path fill="#FFFFFF" d="M250,246.5c-97.85,0-186.344-40.044-250-104.633V250h500V141.867C436.344,206.456,347.85,246.5,250,246.5z" />
+
+
+
+
+
+
+
+</svg>
+                </span>
+            </figure>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="Ticketss" style="position: relative;width: 100%;padding: 200px 0px;">
+    <div class="container">
+        <div class="row">
+
+
+
+
+            <div class="rel">
+
+                <div class="box">
+                    <ul class="left">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="right">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="ticket">
+                        <span class="airline">Jordan Fly</span>
+                        <span class="airline airlineslip">Jordan Fly</span>
+                        <span class="boarding">Boarding pass</span>
+                        <div class="content">
+                            <span class="jfk">@Html.DisplayFor(Tuple => Tuple.Item2.From)</span>
+                            <span class="plane">
+                                <?xml version="1.0" ?>
+                                <svg clip-rule="evenodd" fill-rule="evenodd" height="60" width="60" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><g stroke="#222"><line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390" /><path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10" /></g></svg>
+                            </span>
+                            <span class="sfo">@Html.DisplayFor(Tuple => Tuple.Item2.To)</span>
+
+                            <span class="jfk jfkslip">  @Html.DisplayFor(Tuple => Tuple.Item2.From)</span>
+                            <span class="plane planeslip">
+                                <?xml version="1.0" ?>
+                                <svg clip-rule="evenodd" fill-rule="evenodd" height="50" width="50" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><g stroke="#222"><line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390" /><path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10" /></g></svg>
+                            </span>
+                            <span class="sfo sfoslip">@Html.DisplayFor(Tuple => Tuple.Item2.To)</span>
+                            <div class="sub-content">
+                                <span class="watermark">Jordan Fly</span>
+                                <span class="name">PASSENGER NAME<br /><span>@Html.DisplayFor(Tuple => Tuple.Item1.Fname),@Html.DisplayFor(Tuple => Tuple.Item1.Lname)</span></span>
+                                <span class="flight">Elders<br /><span>X @Html.DisplayFor(Tuple => Tuple.Item1.Elders)</span></span>
+                                <span class="gate">Kids<br /><span> X @Html.DisplayFor(Tuple => Tuple.Item1.Kids)</span></span>
+                                <span class="seat">Adults<br /><span>X @Html.DisplayFor(Tuple => Tuple.Item1.Adult)</span></span>
+                                <span class="boardingtime">DEPART TIME<br /><span>@Html.DisplayFor(Tuple => Tuple.Item2.Depart)</span></span>
+                                <span class="boardingtime" style="left: 173px;">RETURN TIME<br /><span>@Html.DisplayFor(Tuple => Tuple.Item2.Return)</span></span>
+                                <span class="boardingtime" style="left: 310px;">FLIGHT N°<br /><span>@Html.DisplayFor(Tuple => Tuple.Item1.Id)</span></span>
+
+                                <span class="flight flightslip">
+                                    NO OF PASSENGER<br /><span></span>
+                                    @foreach (int x in ViewBag.NO)
+                                    {
+                                        <span>@x</span>
+                                    }
+                                    <span>Persons</span>
+                                </span>
+
+                                <span class="name nameslip">
+                                    Total Price<br /><span>
+                                        @foreach (int x in ViewBag.Total)
+                                        {
+                                            <span>@x</span>
+                                        }
+                                    </span><span>$</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="barcode"></div>
+                        <div class="barcode slip"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js'>
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'>
+</script>
+@Scripts.Render("~/js/other.js")
